@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mental Health Diseases</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="types.css">
+
+
+    <style>
+        .disorder-section {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+
+        .disorder-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .disorder-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .disorder-content {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .btn-toggle {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-toggle:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .disorder-content img {
+            float: left;
+            margin-right: 15px;
+            border-radius: 5px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .disorder-description,
+        .disorder-symptoms {
+            clear: both;
+            margin-top: 10px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mental Health Diseases</h1>
+        <nav>
+            <a href="/index.html" target="_self">Home</a>
+            <a href="/login.html" target="_self">Login</a>
+            <a href="/dashboard.html"target="_self">Dashboard</a>
+            <a href="/diseases.html" target="_self">Mental Health Diseases</a>
+            <a href="/tests.html" target="_self">Self-Assessment Tests</a> 
+            <a href="/remedies.html" target="_self">Remedies</a>
+            <a href="/emergency.html" target="_self">Emergency Contacts</a>
+            <a href="/feedback.html" target="_self">Feedback</a>
+            <a href="/about.html" target="_self">About Us</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Common Mental Health Disorders</h2>
+        <p>Mental health disorders are common, affecting many individuals worldwide. Understanding these conditions is vital for proper treatment and support. Here are some common disorders:</p>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('depression')">
+                <h3>Depression</h3>
+                <span>+</span>
+            </div>
+            <div id="depression" class="disorder-content">
+                <img src="/depression.jpg" alt="Depression">
+                <div class="disorder-description">
+                    <p>Depression is a serious mood disorder causing symptoms that affect how a person feels, thinks, and handles daily activities.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('depression-symptoms')">Show Symptoms</button>
+                    <ul id="depression-symptoms" class="disorder-symptoms" style="display: none;">
+                            <li>Persistent sadness or low mood</li>
+                             <li>Loss of interest or pleasure in activities</li>
+                             <li>Changes in appetite or weight</li>
+                             <li>Sleep disturbances (insomnia or oversleeping)</li>
+                             <li>Fatigue or loss of energy</li>
+                            <li>Feelings of worthlessness or excessive guilt</li>
+                            <li>Difficulties concentrating or making decisions</li>
+                            <li>Restlessness or slowed movements</li>
+                            <li>Thoughts of death or suicide</li>
+                            <li>Physical symptoms (e.g., aches, pains) without a clear cause</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('anxiety')">
+                <h3>Anxiety Disorders</h3>
+                <span>+</span>
+            </div>
+            <div id="anxiety" class="disorder-content">
+                <img src="/anxiety.jpg" alt="Anxiety Disorder">
+                <div class="disorder-description">
+                    <p>Anxiety is a feeling of worry or fear. It’s natural, but excessive anxiety can interfere with daily life.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('anxiety-symptoms')">Show Symptoms</button>
+                    <ul id="anxiety-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Excessive worry or anxiety about various aspects of life</li>
+                        <li>Restlessness or feeling on edge</li>
+                        <li>Fatigue or difficulty concentrating</li>
+                        <li>Irritability</li>
+                        <li>Muscle tension</li>
+                        <li>Sleep disturbances (difficulty falling or staying asleep)</li>
+                        <li>Rapid heartbeat or palpitations</li>
+                        <li>Shortness of breath or feeling smothered</li>
+                        <li>Feeling dizzy, lightheaded, or faint</li>
+                        <li>Avoidance of certain situations or places</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('eating-disorders')">
+                <h3>Eating Disorders</h3>
+                <span>+</span>
+            </div>
+            <div id="eating-disorders" class="disorder-content">
+                <img src="/eating-disorders.jpg" alt="Eating Disorders">
+                <div class="disorder-description">
+                    <p>Eating disorders involve extreme emotions, attitudes, and behaviors related to weight and food.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('eating-symptoms')">Show Symptoms</button>
+                    <ul id="eating-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Extreme concern with body weight or shape</li>
+                        <li>Severe restriction of food intake</li>
+                        <li>Binge eating followed by purging</li>
+                        <li>Skipping meals or avoiding certain food groups</li>
+                        <li>Changes in appetite or eating habits</li>
+                        <li>Excessive exercise</li>
+                        <li>Preoccupation with food, dieting, or body image</li>
+                        <li>Withdrawal from social activities involving food</li>
+                        <li>Physical symptoms such as dizziness, fatigue, or digestive issues</li>
+                        <li>Emotional symptoms like anxiety or irritability around meal times</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('ocd')">
+                <h3>Obsessive-Compulsive Disorder (OCD)</h3>
+                <span>+</span>
+            </div>
+            <div id="ocd" class="disorder-content">
+                <img src="/ocd.jpg" alt="Obsessive-Compulsive Disorder">
+                <div class="disorder-description">
+                    <p>OCD is characterized by uncontrollable, reoccurring thoughts and behaviors that the person feels compelled to repeat.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('ocd-symptoms')">Show Symptoms</button>
+                    <ul id="ocd-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Intrusive and unwanted thoughts (obsessions)</li>
+                        <li>Compulsive behaviors or rituals to alleviate anxiety (compulsions)</li>
+                        <li>Excessive concern about dirt, germs, or contamination</li>
+                        <li>Need for symmetry or orderliness</li>
+                        <li>Fear of harming oneself or others</li>
+                        <li>Checking behaviors (e.g., repeatedly checking locks or appliances)</li>
+                        <li>Repeating actions (e.g., counting, tapping) a specific number of times</li>
+                        <li>Difficulty discarding items, regardless of their value</li>
+                        <li>Spending significant time on rituals that interfere with daily life</li>
+                        <li>Emotional distress when unable to perform compulsive behaviors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('phobia')">
+                <h3>Phobia</h3>
+                <span>+</span>
+            </div>
+            <div id="phobia" class="disorder-content">
+                <img src="/phobia.jpg" alt="Phobia">
+                <div class="disorder-description">
+                    <p>A phobia is an irrational fear of a specific object, situation, or activity that is unlikely to cause harm.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('phobia-symptoms')">Show Symptoms</button>
+                    <ul id="phobia-symptoms" class="disorder-symptoms" style="display: none;">
+                        <ul>
+                            <li>Intense fear or anxiety about a specific object or situation</li>
+                            <li>Avoidance of the feared object or situation</li>
+                            <li>Physical symptoms such as sweating, trembling, or increased heart rate</li>
+                            <li>Feeling faint, dizzy, or lightheaded when confronted with the phobia</li>
+                            <li>Difficulty breathing or a sensation of choking</li>
+                            <li>Nausea or stomach discomfort</li>
+                            <li>Panic attacks when exposed to the phobia</li>
+                            <li>Feeling a loss of control or a sense of impending doom</li>
+                            <li>Overwhelming desire to escape the situation</li>
+                            <li>Distress that is out of proportion to the actual danger posed</li>
+                        </ul>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('schizophrenia')">
+                <h3>Schizophrenia</h3>
+                <span>+</span>
+            </div>
+            <div id="schizophrenia" class="disorder-content">
+                <img src="/schizophrenia.jpg" alt="Schizophrenia">
+                <div class="disorder-description">
+                    <p>A phobia is an irrational fear of a specific object, situation, or activity that is unlikely to cause harm.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('schizophrenia-symptoms')">Show Symptoms</button>
+                    <ul id="schizophrenia-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Delusions</li>
+                        <li>Hallucinations</li>
+                        <li>Disorganized thinking</li>
+                        <li>Disorganized or abnormal motor behavior</li>
+                        <li>Negative symptoms (e.g., lack of motivation, reduced emotional expression)</li>
+                        <li>Difficulty with concentration and attention</li>
+                        <li>Social withdrawal</li>
+                        <li>Difficulty in distinguishing between reality and imagination</li>
+                        <li>Emotional flatness</li>
+                        <li>Difficulty in performing daily tasks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('adhd')">
+                <h3>ADHD</h3>
+                <span>+</span>
+            </div>
+            <div id="adhd" class="disorder-content">
+                <img src="/adhd.jpg" alt="ADHD">
+                <div class="disorder-description">
+                    <p>A phobia is an irrational fear of a specific object, situation, or activity that is unlikely to cause harm.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('adhd-symptoms')">Show Symptoms</button>
+                    <ul id="adhd-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Difficulties with attention and focus</li>
+            <li>Difficulty organizing tasks and activities</li>
+            <li>Frequent forgetfulness in daily activities</li>
+            <li>Impulsivity or acting without thinking</li>
+            <li>Restlessness or fidgeting</li>
+            <li>Difficulty staying seated in situations where it is expected</li>
+            <li>Talking excessively or interrupting others</li>
+                <li>Difficulty following instructions and completing tasks</li>
+                 <li>Frequent daydreaming or distraction</li>
+                    <li>Difficulty regulating emotions</li>
+                </div>
+            </div>
+        </div>
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('bipolar disorder')">
+                <h3>Bipolar Disorder</h3>
+                <span>+</span>
+            </div>
+            <div id="bipolar disorder" class="disorder-content">
+                <img src="/bipolar disorder.jpg" alt="Bipolar Disorder">
+                <div class="disorder-description">
+                    <p>A phobia is an irrational fear of a specific object, situation, or activity that is unlikely to cause harm.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('bipolar disorder-symptoms')">Show Symptoms</button>
+                    <ul id="bipolar disorder-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Extreme mood swings, including manic and depressive episodes</li>
+                        <li>Increased energy or activity levels during manic phases</li>
+                        <li>Decreased need for sleep during manic episodes</li>
+                        <li>Racing thoughts or rapid speech</li>
+                        <li>Impulsivity or engaging in risky behaviors during mania</li>
+                        <li>Feelings of euphoria or heightened self-esteem during manic phases</li>
+                        <li>Persistent sadness or hopelessness during depressive episodes</li>
+                        <li>Loss of interest in activities once enjoyed</li>
+                        <li>Difficulty concentrating or making decisions</li>
+                        <li>Changes in appetite or weight</li>
+                        <li>Thoughts of death or suicide during depressive episodes</li>
+                </div>
+            </div>
+        </div>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('dementia')">
+                <h3>Dementia</h3>
+                <span>+</span>
+            </div>
+            <div id="dementia" class="disorder-content">
+                <img src="/dementia.jpg" alt="Dementia">
+                <div class="disorder-description">
+                    <p>A phobia is an irrational fear of a specific object, situation, or activity that is unlikely to cause harm.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('dementia-symptoms')">Show Symptoms</button>
+                    <ul id="dementia-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Memory loss that disrupts daily life</li>
+                        <li>Difficulty communicating or finding words</li>
+                        <li>Difficulty with reasoning or problem-solving</li>
+                        <li>Difficulty performing familiar tasks</li>
+                        <li>Disorientation to time and place</li>
+                        <li>Changes in mood and personality</li>
+                        <li>Loss of initiative or withdrawal from social activities</li>
+                        <li>Misplacing items or losing the ability to retrace steps</li>
+                        <li>Difficulty understanding visual images and spatial relationships</li>
+                        <li>Behavioral changes, such as agitation or aggression</li>
+                </div>
+            </div>
+        </div>
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('learning disorders')">
+                <h3>Learning Disorders</h3>
+                <span>+</span>
+            </div>
+            <div id="learning disorders" class="disorder-content">
+                <img src="/learning disorders.jpg" alt="Learning Disorders">
+                <div class="disorder-description">
+                    <p>A phobia is an irrational fear of a specific object, situation, or activity that is unlikely to cause harm.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('learning disorders-symptoms')">Show Symptoms</button>
+                    <ul id="learning disorders-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Difficulties with reading (dyslexia)</li>
+                        <li>Difficulties with writing (dysgraphia)</li>
+                        <li>Difficulties with math (dyscalculia)</li>
+                        <li>Poor academic performance compared to peers</li>
+                        <li>Difficulty understanding and following instructions</li>
+                        <li>Struggles with memorizing information</li>
+                        <li>Difficulty organizing tasks and materials</li>
+                        <li>Problems with time management</li>
+                        <li>Low self-esteem related to academic performance</li>
+                        <li>Frustration or anxiety regarding schoolwork</li>
+                </div>
+            </div>
+        </div>
+
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('dissociative identity disorder')">
+                <h3>Dissociative Identity Disorder(DID)</h3>
+                <span>+</span>
+            </div>
+            <div id="dissociative identity disorder" class="disorder-content">
+                <img src="/dissociative identity disorder.jpg" alt="Dissociative Identity Disorder">
+                <div class="disorder-description">
+                    <p>A phobia is an irrational fear of a specific object, situation, or activity that is unlikely to cause harm.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('dissociative identity disorder-symptoms')">Show Symptoms</button>
+                    <ul id="dissociative identity disorder-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Presence of two or more distinct personality states or identities</li>
+                        <li>Recurrent gaps in memory regarding daily events, personal information, or traumatic events</li>
+                        <li>Feeling detached from one’s thoughts, feelings, or sense of identity</li>
+                        <li>Disruptions in the continuity of identity and sense of self</li>
+                        <li>Significant distress or impairment in social, occupational, or other areas of functioning</li>
+                        <li>Experiencing a sense of unreality regarding oneself or the environment</li>
+                        <li>Alterations in behavior, memory, and perception that are not attributable to a medical condition</li>
+                        <li>Difficulty with emotional regulation</li>
+                        <li>Unexplained physical symptoms or conditions</li>
+                        <li>History of trauma, particularly during childhood</li>
+                </div>
+            </div>
+        </div>
+        <div class="disorder-section">
+            <div class="disorder-header" onclick="toggleContent('autistic disorder')">
+                <h3>Autistic Disorder</h3>
+                <span>+</span>
+            </div>
+            <div id="autistic disorder" class="disorder-content">
+                <img src="/autisitc disorder.jpg" alt="Autistic">
+                <div class="disorder-description">
+                    <p>A phobia is an irrational fear of a specific object, situation, or activity that is unlikely to cause harm.</p>
+                    <button class="btn-toggle" onclick="toggleSymptoms('autistic disorder-symptoms')">Show Symptoms</button>
+                    <ul id="autistic disorder-symptoms" class="disorder-symptoms" style="display: none;">
+                        <li>Difficulties with social interactions and communication</li>
+                        <li>Challenges in understanding social cues and nonverbal communication</li>
+                        <li>Repetitive behaviors or routines</li>
+                        <li>Intense focus on specific interests or topics</li>
+                        <li>Sensitivity to sensory inputs (e.g., lights, sounds, textures)</li>
+                        <li>Difficulty adapting to changes in routine or environment</li>
+                        <li>Struggles with forming and maintaining relationships</li>
+                        <li>Delayed language development or unusual speech patterns</li>
+                        <li>Limited use of gestures or facial expressions</li>
+                        <li>Difficulty with imaginative play or pretend activities</li>
+                </div>
+            </div>
+        </div>
+
+
+       
+            
+            
+     
+
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            content.style.display = content.style.display === "none" || !content.style.display ? "block" : "none";
+        }
+
+        function toggleSymptoms(id) {
+            var symptoms = document.getElementById(id);
+            symptoms.style.display = symptoms.style.display === "none" || !symptoms.style.display ? "block" : "none";
+        }
+    </script>
+
+
+<footer>
+    <p>&copy; 2024 Mental Health Awareness. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

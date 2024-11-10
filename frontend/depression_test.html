@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Depression Test - VCare4U</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="types.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .meter {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background-color: #e0e0e0;
+            border-radius: 100px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            transition: width 0.3s;
+        }
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        #emergencyButton {
+            display: none;
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Depression Test</h1>
+        <nav>
+            <a href="/tests.html" target="_self">Back to Tests</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="test-section">
+            <h2>Assess Your Depression Levels</h2>
+            <form id="depressionTestForm" onsubmit="calculateDepressionScore(event)">
+                <p>Rate the following statements:</p>
+                <div class="question">
+                    <label>1. Do you feel sad or hopeless?</label><br>
+                    <input type="radio" name="depressionQ1" value="0" required> Never<br>
+                    <input type="radio" name="depressionQ1" value="1"> Sometimes<br>
+                    <input type="radio" name="depressionQ1" value="2"> Often<br>
+                    <input type="radio" name="depressionQ1" value="3"> Always<br>
+                </div>
+                <div class="question">
+                    <label>2. Do you have lost interest in activities you once enjoyed?</label><br>
+                    <input type="radio" name="depressionQ2" value="0" required> Never<br>
+                    <input type="radio" name="depressionQ2" value="1"> Sometimes<br>
+                    <input type="radio" name="depressionQ2" value="2"> Often<br>
+                    <input type="radio" name="depressionQ2" value="3"> Always<br>
+                </div>
+                <div class="question">
+                    <label>3. Do you experience changes in appetite or weight?</label><br>
+                    <input type="radio" name="depressionQ3" value="0" required> Never<br>
+                    <input type="radio" name="depressionQ3" value="1"> Sometimes<br>
+                    <input type="radio" name="depressionQ3" value="2"> Often<br>
+                    <input type="radio" name="depressionQ3" value="3"> Always<br>
+                </div>
+                <div class="question">
+                    <label>4. Do you have difficulty sleeping or sleeping too much?</label><br>
+                    <input type="radio" name="depressionQ4" value="0" required> Never<br>
+                    <input type="radio" name="depressionQ4" value="1"> Sometimes<br>
+                    <input type="radio" name="depressionQ4" value="2"> Often<br>
+                    <input type="radio" name="depressionQ4" value="3"> Always<br>
+                </div>
+                <div class="question">
+                    <label>5. Do you feel tired or have little energy?</label><br>
+                    <input type="radio" name="depressionQ5" value="0" required> Never<br>
+                    <input type="radio" name="depressionQ5" value="1"> Sometimes<br>
+                    <input type="radio" name="depressionQ5" value="2"> Often<br>
+                    <input type="radio" name="depressionQ5" value="3"> Always<br>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+                <div id="depressionResult" class="result"></div>
+                <div class="meter" id="depressionMeter">
+                    <div class="fill" id="depressionFill" style="width: 0%;"></div>
+                    <div class="percentage" id="depressionPercentage">0%</div>
+                </div>
+                <button id="emergencyButton" class="btn" onclick="window.location.href='emergency.html'">Emergency! Seek Help</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mental Health Awareness. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calculateDepressionScore(event) {
+            event.preventDefault();
+            let score = 0;
+            const form = document.getElementById('depressionTestForm');
+            const selections = form.querySelectorAll('input[type="radio"]:checked');
+            selections.forEach(radio => {
+                score += parseInt(radio.value);
+            });
+
+            let result;
+            let meterWidth;
+            let percentage;
+
+            if (score <= 4) {
+                result = 'Your risk for depression is Mild.';
+                meterWidth = '25%';
+                percentage = '25%';
+                document.getElementById('depressionFill').style.backgroundColor = 'green';
+            } else if (score <= 9) {
+                result = 'Your risk for depression is Average.';
+                meterWidth = '50%';
+                percentage = '50%';
+                document.getElementById('depressionFill').style.backgroundColor = 'orange';
+            } else {
+                result = 'Emergency! Seek professional help.';
+                meterWidth = '100%';
+                percentage = '100%';
+                document.getElementById('emergencyButton').style.display = 'block';
+                document.getElementById('depressionFill').style.backgroundColor = 'darkred';
+            }
+
+            document.getElementById('depressionResult').innerText = result;
+            document.getElementById('depressionFill').style.width = meterWidth;
+            document.getElementById('depressionPercentage').innerText = percentage;
+            document.getElementById('depressionMeter').style.display = 'block';
+        }
+    </script>
+
+
+
+
+
+</body>
+</html>

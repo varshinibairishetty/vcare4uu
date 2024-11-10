@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schizophrenia Test - VCare4U</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="types.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .meter {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background-color: #e0e0e0;
+            border-radius: 100px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            transition: width 0.3s;
+        }
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        #emergencyButton {
+            display: none;
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Schizophrenia Test</h1>
+        <nav>
+            <a href="/tests.html" target="_self">Back to Tests</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="test-section">
+            <h2>Assess Your Schizophrenia Risk</h2>
+            <form id="schizophreniaTestForm" onsubmit="calculateSchizophreniaScore(event)">
+                <p>Rate the following statements:</p>
+                <div class="question">
+                    <label>1. Do you hear voices or see things that others do not?</label><br>
+                    <input type="radio" name="schizophreniaQ1" value="0" required> Never<br>
+                    <input type="radio" name="schizophreniaQ1" value="1"> Sometimes<br>
+                    <input type="radio" name="schizophreniaQ1" value="2"> Often<br>
+                    <input type="radio" name="schizophreniaQ1" value="3"> Always<br>
+                </div>
+                <div class="question">
+                    <label>2. Do you feel that people are plotting against you or talking about you?</label><br>
+                    <input type="radio" name="schizophreniaQ2" value="0" required> Never<br>
+                    <input type="radio" name="schizophreniaQ2" value="1"> Sometimes<br>
+                    <input type="radio" name="schizophreniaQ2" value="2"> Often<br>
+                    <input type="radio" name="schizophreniaQ2" value="3"> Always<br>
+                </div>
+                <div class="question">
+                    <label>3. Do you have trouble concentrating or keeping your thoughts organized?</label><br>
+                    <input type="radio" name="schizophreniaQ3" value="0" required> Never<br>
+                    <input type="radio" name="schizophreniaQ3" value="1"> Sometimes<br>
+                    <input type="radio" name="schizophreniaQ3" value="2"> Often<br>
+                    <input type="radio" name="schizophreniaQ3" value="3"> Always<br>
+                </div>
+                <div class="question">
+                    <label>4. Do you feel disconnected from reality or experience delusions?</label><br>
+                    <input type="radio" name="schizophreniaQ4" value="0" required> Never<br>
+                    <input type="radio" name="schizophreniaQ4" value="1"> Sometimes<br>
+                    <input type="radio" name="schizophreniaQ4" value="2"> Often<br>
+                    <input type="radio" name="schizophreniaQ4" value="3"> Always<br>
+                </div>
+                <div class="question">
+                    <label>5. Do you find it difficult to manage daily activities due to your thoughts?</label><br>
+                    <input type="radio" name="schizophreniaQ5" value="0" required> Never<br>
+                    <input type="radio" name="schizophreniaQ5" value="1"> Sometimes<br>
+                    <input type="radio" name="schizophreniaQ5" value="2"> Often<br>
+                    <input type="radio" name="schizophreniaQ5" value="3"> Always<br>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+                <div id="schizophreniaResult" class="result"></div>
+                <div class="meter" id="schizophreniaMeter">
+                    <div class="fill" id="schizophreniaFill" style="width: 0%;"></div>
+                    <div class="percentage" id="schizophreniaPercentage">0%</div>
+                </div>
+                <button id="emergencyButton" class="btn" onclick="window.location.href='emergency.html'">Emergency! Seek Help</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mental Health Awareness. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calculateSchizophreniaScore(event) {
+            event.preventDefault();
+            let score = 0;
+            const form = document.getElementById('schizophreniaTestForm');
+            const selections = form.querySelectorAll('input[type="radio"]:checked');
+            selections.forEach(radio => {
+                score += parseInt(radio.value);
+            });
+
+            let result;
+            let meterWidth;
+            let percentage;
+
+            if (score <= 4) {
+                result = 'Your risk for Schizophrenia is Mild.';
+                meterWidth = '25%';
+                percentage = '25%';
+                document.getElementById('schizophreniaFill').style.backgroundColor = 'green';
+            } else if (score <= 9) {
+                result = 'Your risk for Schizophrenia is Average.';
+                meterWidth = '50%';
+                percentage = '50%';
+                document.getElementById('schizophreniaFill').style.backgroundColor = 'orange';
+            } else {
+                result = 'Emergency! Seek professional help.';
+                meterWidth = '100%';
+                percentage = '100%';
+                document.getElementById('emergencyButton').style.display = 'block';
+                document.getElementById('schizophreniaFill').style.backgroundColor = 'darkred';
+            }
+
+            document.getElementById('schizophreniaResult').innerText = result;
+            document.getElementById('schizophreniaFill').style.width = meterWidth;
+            document.getElementById('schizophreniaPercentage').innerText = percentage;
+            document.getElementById('schizophreniaMeter').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
